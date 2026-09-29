@@ -75,7 +75,8 @@ a { color: inherit; text-decoration: none; }
 .hero-aside { position: absolute; z-index: 2; top: 29%; right: 6.2%; display: grid; width: 330px; height: 330px; place-items: center; color: #a8afaa; font-family: var(--mono); font-size: 8px; letter-spacing: 0.14em; line-height: 1.9; text-align: center; }
 .atom-visual { position: absolute; inset: 0; display: grid; place-items: center; pointer-events: none; }
 .atom-orbit { position: relative; display: block; width: 178px; height: 178px; border: 1px solid rgba(196, 255, 94, .22); border-radius: 50%; box-shadow: 0 0 16px rgba(196, 255, 94, .04); }
-.atom-electron { position: absolute; top: 50%; left: 50%; width: 6px; height: 6px; border-radius: 50%; background: #e7ffbd; box-shadow: 0 0 7px 2px rgba(196, 255, 94, .8), 0 0 15px 4px rgba(196, 255, 94, .19); animation: electron-orbit 6s linear infinite; }
+.atom-electron-track { position: absolute; inset: 0; border-radius: 50%; animation: electron-orbit 6s linear infinite; }
+.atom-electron { position: absolute; top: -3px; left: 50%; width: 6px; height: 6px; border-radius: 50%; background: #e7ffbd; box-shadow: 0 0 7px 2px rgba(196, 255, 94, .8), 0 0 15px 4px rgba(196, 255, 94, .19); transform: translateX(-50%); }
 .atom-tagline { position: relative; z-index: 1; }
 .hero-index { position: absolute; right: 7%; bottom: 65px; color: #73787a; font-family: var(--mono); font-size: 9px; }
 .scroll-cue { position: absolute; z-index: 2; bottom: 58px; left: 11.2%; display: flex; align-items: center; gap: 12px; color: #929697; font-family: var(--mono); font-size: 8px; letter-spacing: 0.14em; }
@@ -171,7 +172,7 @@ a { color: inherit; text-decoration: none; }
 .reveal.is-visible { opacity: 1; transform: translateY(0); }
 
 @keyframes scan { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(21px); } }
-@keyframes electron-orbit { to { transform: rotate(360deg) translateY(-86px); } }
+@keyframes electron-orbit { from { transform: rotate(0deg); } to { transform: rotate(359deg); } }
 
 @media (max-width: 760px) {
   .site-header { height: 70px; padding: 0 6%; }

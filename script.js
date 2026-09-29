@@ -3,6 +3,38 @@ const stage = document.querySelector(".chip-stage");
 const assembly = document.querySelector(".chip-assembly");
 const blocks = document.querySelectorAll(".chip-block");
 const labels = document.querySelectorAll(".chip-label");
+const customCursor = document.querySelector(".custom-cursor");
+
+if (customCursor && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+  document.addEventListener("pointermove", (event) => {
+    if (event.pointerType === "touch") return;
+    customCursor.style.left = `${event.clientX}px`;
+    customCursor.style.top = `${event.clientY}px`;
+    customCursor.classList.add("is-visible");
+  });
+
+  document.addEventListener("pointerover", (event) => {
+    if (event.target instanceof Element && event.target.closest("a, button, [role='button']")) {
+      customCursor.classList.add("is-active");
+    }
+  });
+
+  document.addEventListener("pointerout", (event) => {
+    if (
+      event.target instanceof Element &&
+      event.target.closest("a, button, [role='button']") &&
+      !(event.relatedTarget instanceof Element && event.relatedTarget.closest("a, button, [role='button']"))
+    ) {
+      customCursor.classList.remove("is-active");
+    }
+  });
+
+  document.addEventListener("pointerdown", () => customCursor.classList.add("is-pressed"));
+  document.addEventListener("pointerup", () => customCursor.classList.remove("is-pressed"));
+  document.addEventListener("pointerleave", () => {
+    customCursor.classList.remove("is-visible", "is-active", "is-pressed");
+  });
+}
 
 function updateChip() {
   if (!story || !stage || !assembly) return;

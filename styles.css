@@ -23,8 +23,18 @@ a { color: inherit; text-decoration: none; }
 ::selection { background: var(--green); color: var(--background); }
 
 @media (hover: hover) and (pointer: fine) {
-  body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='25' viewBox='0 0 20 25'%3E%3Cpath d='M2 1v18l5-5 4 9 4-2-4-9h7L2 1z' fill='%23c4ff5e' stroke='%23080a0d' stroke-width='1.5' stroke-linejoin='round'/%3E%3Cpath d='M5 5v8' stroke='%23080a0d' stroke-width='1'/%3E%3C/svg%3E") 2 1, auto; }
-  a, button, [role="button"] { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='25' viewBox='0 0 20 25'%3E%3Cpath d='M2 1v18l5-5 4 9 4-2-4-9h7L2 1z' fill='%23c4ff5e' stroke='%23080a0d' stroke-width='1.5' stroke-linejoin='round'/%3E%3Ccircle cx='16' cy='20' r='2.5' fill='%23c4ff5e' stroke='%23080a0d' stroke-width='1'/%3E%3C/svg%3E") 2 1, pointer; }
+  body, a, button, [role="button"] { cursor: none; }
+}
+.custom-cursor { position: fixed; z-index: 100; top: 0; left: 0; width: 42px; height: 42px; pointer-events: none; opacity: 0; transform: translate(-50%, -50%); transition: opacity 160ms ease; }
+.custom-cursor.is-visible { opacity: 1; }
+.custom-cursor__ring, .custom-cursor__glow, .custom-cursor__core { position: absolute; top: 50%; left: 50%; display: block; border-radius: 50%; transform: translate(-50%, -50%); }
+.custom-cursor__ring { width: 30px; height: 30px; border: 1px solid rgba(196, 255, 94, .8); background: rgba(196, 255, 94, .025); box-shadow: 0 0 12px rgba(196, 255, 94, .18), inset 0 0 9px rgba(196, 255, 94, .06); transition: width 180ms ease, height 180ms ease, background 180ms ease, box-shadow 180ms ease; }
+.custom-cursor__glow { width: 12px; height: 12px; background: rgba(196, 255, 94, .35); box-shadow: 0 0 10px 4px rgba(196, 255, 94, .4), 0 0 24px 9px rgba(196, 255, 94, .17); }
+.custom-cursor__core { width: 4px; height: 4px; background: #efffd9; box-shadow: 0 0 7px 2px rgba(196, 255, 94, .9); }
+.custom-cursor.is-active .custom-cursor__ring { width: 40px; height: 40px; background: rgba(196, 255, 94, .08); box-shadow: 0 0 18px rgba(196, 255, 94, .3), inset 0 0 12px rgba(196, 255, 94, .1); }
+.custom-cursor.is-pressed .custom-cursor__ring { width: 24px; height: 24px; }
+@media (hover: none), (pointer: coarse) {
+  .custom-cursor { display: none; }
 }
 
 .site-header {

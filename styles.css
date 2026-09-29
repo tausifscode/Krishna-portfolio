@@ -23,8 +23,8 @@ a { color: inherit; text-decoration: none; }
 ::selection { background: var(--green); color: var(--background); }
 
 @media (hover: hover) and (pointer: fine) {
-  body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='40' viewBox='0 0 32 40'%3E%3Cpath d='M3 2v28l8-8 6 14 6-3-6-14h11L3 2z' fill='%23c4ff5e' stroke='%23080a0d' stroke-width='2' stroke-linejoin='round'/%3E%3Cpath d='M7 9v12' stroke='%23080a0d' stroke-width='1.5'/%3E%3C/svg%3E") 3 2, auto; }
-  a, button, [role="button"] { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='34' viewBox='0 0 28 34'%3E%3Cpath d='M4 2v20l5-5 4 10 5-2-4-10h9L4 2z' fill='%23c4ff5e' stroke='%23080a0d' stroke-width='2' stroke-linejoin='round'/%3E%3Ccircle cx='21' cy='25' r='4' fill='%23c4ff5e' stroke='%23080a0d' stroke-width='1.5'/%3E%3C/svg%3E") 4 2, pointer; }
+  body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='25' viewBox='0 0 20 25'%3E%3Cpath d='M2 1v18l5-5 4 9 4-2-4-9h7L2 1z' fill='%23c4ff5e' stroke='%23080a0d' stroke-width='1.5' stroke-linejoin='round'/%3E%3Cpath d='M5 5v8' stroke='%23080a0d' stroke-width='1'/%3E%3C/svg%3E") 2 1, auto; }
+  a, button, [role="button"] { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='25' viewBox='0 0 20 25'%3E%3Cpath d='M2 1v18l5-5 4 9 4-2-4-9h7L2 1z' fill='%23c4ff5e' stroke='%23080a0d' stroke-width='1.5' stroke-linejoin='round'/%3E%3Ccircle cx='16' cy='20' r='2.5' fill='%23c4ff5e' stroke='%23080a0d' stroke-width='1'/%3E%3C/svg%3E") 2 1, pointer; }
 }
 
 .site-header {

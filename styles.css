@@ -151,6 +151,9 @@ a { color: inherit; text-decoration: none; }
 .about-mark span { font-weight: 300; transform: rotate(19deg) scaleY(1.25); }
 .about-mark-orbit { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
 .about-mark-light { fill: var(--green); filter: drop-shadow(0 0 5px var(--green)); transform-box: view-box; transform-origin: 150px 150px; animation: about-orbit 12s linear infinite; }
+.about-mark-light:nth-of-type(2) { fill: #e5ffad; animation-duration: 9s; animation-delay: -2s; animation-direction: reverse; }
+.about-mark-light:nth-of-type(3) { fill: #a9ed4b; animation-duration: 15s; animation-delay: -8s; }
+.about-mark-light:nth-of-type(4) { fill: #d2ff87; animation-duration: 10s; animation-delay: -6s; animation-direction: reverse; }
 .work { background: #090b0e; }
 .work-heading { margin: 15px 0 73px 12%; }
 .project-list { border-top: 1px solid var(--line); }

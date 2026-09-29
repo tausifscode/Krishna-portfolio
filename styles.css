@@ -74,16 +74,16 @@ a { color: inherit; text-decoration: none; }
 .text-link:hover span { transform: translateY(4px); }
 .hero-aside { position: absolute; z-index: 2; top: 29%; right: 6.2%; display: grid; width: 330px; height: 330px; place-items: center; color: #a8afaa; font-family: var(--mono); font-size: 8px; letter-spacing: 0.14em; line-height: 1.9; text-align: center; }
 .atom-visual { position: absolute; inset: 0; display: grid; place-items: center; perspective: 700px; }
-.atom-orbit { position: absolute; width: 83%; height: 38%; border: 1px solid rgba(196, 255, 94, .19); border-radius: 50%; box-shadow: 0 0 12px rgba(196, 255, 94, .035), inset 0 0 12px rgba(196, 255, 94, .025); }
+.atom-orbit { position: absolute; width: 90%; height: 60%; border: 1px solid rgba(196, 255, 94, .12); border-radius: 50%; box-shadow: 0 0 12px rgba(196, 255, 94, .025), inset 0 0 12px rgba(196, 255, 94, .02); }
 .atom-orbit-one { transform: rotate(-28deg); }
-.atom-orbit-two { transform: rotate(32deg) scaleY(.94); border-color: rgba(196, 255, 94, .14); }
-.atom-orbit-three { width: 61%; height: 32%; transform: rotate(90deg) scaleY(.9); border-color: rgba(196, 255, 94, .12); }
-.atom-electron { position: absolute; top: 31%; left: 50%; width: 7px; height: 7px; border-radius: 50%; background: #e7ffbd; box-shadow: 0 0 8px 2px rgba(196, 255, 94, .85), 0 0 18px 5px rgba(196, 255, 94, .22); transform-origin: 50% 125px; }
+.atom-orbit-two { transform: rotate(32deg) scaleY(.94); border-color: rgba(196, 255, 94, .1); }
+.atom-orbit-three { width: 68%; height: 50%; transform: rotate(90deg) scaleY(.9); border-color: rgba(196, 255, 94, .085); }
+.atom-electron { position: absolute; top: 50%; left: 50%; width: 6px; height: 6px; border-radius: 50%; background: #e7ffbd; box-shadow: 0 0 7px 2px rgba(196, 255, 94, .8), 0 0 15px 4px rgba(196, 255, 94, .19); transform: rotate(0deg) translateY(-97px); }
 .electron-one { animation: electron-orbit 5.5s linear infinite; }
 .electron-two { animation: electron-orbit 7s linear infinite reverse; }
-.electron-three { top: 33%; width: 5px; height: 5px; animation: electron-orbit 4.5s linear infinite; }
-.atom-nucleus { position: absolute; width: 9px; height: 9px; border-radius: 50%; background: var(--green); box-shadow: 0 0 12px 4px rgba(196, 255, 94, .47), 0 0 32px 10px rgba(196, 255, 94, .12); }
-.atom-tagline { position: relative; z-index: 1; text-shadow: 0 1px 14px rgba(8, 10, 13, .95), 0 0 22px rgba(8, 10, 13, .9); }
+.electron-three { width: 5px; height: 5px; animation: electron-orbit 4.5s linear infinite; }
+.atom-nucleus { position: absolute; width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 10px 3px rgba(196, 255, 94, .4), 0 0 24px 8px rgba(196, 255, 94, .1); }
+.atom-tagline { position: relative; z-index: 1; padding: 9px 15px; background: radial-gradient(ellipse, rgba(8, 10, 13, .82) 0%, rgba(8, 10, 13, .68) 56%, rgba(8, 10, 13, 0) 100%); text-shadow: 0 1px 12px rgba(8, 10, 13, .8); }
 .hero-index { position: absolute; right: 7%; bottom: 65px; color: #73787a; font-family: var(--mono); font-size: 9px; }
 .scroll-cue { position: absolute; z-index: 2; bottom: 58px; left: 11.2%; display: flex; align-items: center; gap: 12px; color: #929697; font-family: var(--mono); font-size: 8px; letter-spacing: 0.14em; }
 .scroll-cue-line { position: relative; display: block; width: 34px; height: 1px; background: #525857; }
@@ -178,7 +178,7 @@ a { color: inherit; text-decoration: none; }
 .reveal.is-visible { opacity: 1; transform: translateY(0); }
 
 @keyframes scan { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(21px); } }
-@keyframes electron-orbit { to { transform: rotate(360deg); } }
+@keyframes electron-orbit { to { transform: rotate(360deg) translateY(-97px); } }
 
 @media (max-width: 760px) {
   .site-header { height: 70px; padding: 0 6%; }

@@ -73,17 +73,15 @@ a { color: inherit; text-decoration: none; }
 .text-link span { transition: transform 180ms ease; }
 .text-link:hover span { transform: translateY(4px); }
 .hero-aside { position: absolute; z-index: 2; top: 29%; right: 6.2%; display: grid; width: 330px; height: 330px; place-items: center; color: #a8afaa; font-family: var(--mono); font-size: 8px; letter-spacing: 0.14em; line-height: 1.9; text-align: center; }
-.atom-visual { position: absolute; inset: 0; display: grid; place-items: center; perspective: 700px; pointer-events: none; }
-.atom-orbit { position: absolute; width: 83%; height: 38%; border: 1px solid rgba(196, 255, 94, .19); border-radius: 50%; box-shadow: 0 0 12px rgba(196, 255, 94, .035), inset 0 0 12px rgba(196, 255, 94, .025); }
-.atom-orbit-one { transform: rotate(-28deg); }
-.atom-orbit-two { transform: rotate(32deg) scaleY(.94); border-color: rgba(196, 255, 94, .14); }
-.atom-orbit-three { width: 61%; height: 32%; transform: rotate(90deg) scaleY(.9); border-color: rgba(196, 255, 94, .12); }
-.atom-electron-track { position: absolute; top: 50%; left: 50%; width: 83%; height: 38%; border-radius: 50%; animation: electron-orbit 6s linear infinite; }
-.electron-track-one { --orbit-angle: -28deg; }
-.electron-track-two { --orbit-angle: 32deg; animation-duration: 7s; animation-direction: reverse; }
-.electron-track-three { --orbit-angle: 90deg; width: 61%; height: 32%; animation-duration: 4.5s; }
-.atom-electron { position: absolute; top: -3px; left: 50%; width: 6px; height: 6px; border-radius: 50%; background: #e7ffbd; box-shadow: 0 0 8px 2px rgba(196, 255, 94, .85), 0 0 18px 5px rgba(196, 255, 94, .22); transform: translateX(-50%); }
-.atom-nucleus { position: absolute; width: 9px; height: 9px; border-radius: 50%; background: var(--green); box-shadow: 0 0 12px 4px rgba(196, 255, 94, .47), 0 0 32px 10px rgba(196, 255, 94, .12); }
+.tagline-stars { position: absolute; inset: 0; pointer-events: none; }
+.tagline-star { position: absolute; width: 2px; height: 2px; border-radius: 50%; background: rgba(224, 255, 183, .65); box-shadow: 0 0 5px 1px rgba(196, 255, 94, .18); animation: star-drift 9s ease-in-out infinite alternate; }
+.star-one { top: 23%; left: 28%; animation-delay: -1s; }
+.star-two { top: 28%; right: 24%; width: 2px; height: 2px; animation-delay: -5s; }
+.star-three { top: 48%; left: 18%; animation-delay: -3s; }
+.star-four { top: 56%; right: 17%; width: 1px; height: 1px; animation-delay: -7s; }
+.star-five { bottom: 25%; left: 30%; width: 1px; height: 1px; animation-delay: -4s; }
+.star-six { right: 32%; bottom: 22%; animation-delay: -2s; }
+.star-seven { top: 18%; right: 39%; width: 1px; height: 1px; animation-delay: -6s; }
 .atom-tagline { position: relative; z-index: 1; }
 .hero-index { position: absolute; right: 7%; bottom: 65px; color: #73787a; font-family: var(--mono); font-size: 9px; }
 .scroll-cue { position: absolute; z-index: 2; bottom: 58px; left: 11.2%; display: flex; align-items: center; gap: 12px; color: #929697; font-family: var(--mono); font-size: 8px; letter-spacing: 0.14em; }
@@ -179,10 +177,7 @@ a { color: inherit; text-decoration: none; }
 .reveal.is-visible { opacity: 1; transform: translateY(0); }
 
 @keyframes scan { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(21px); } }
-@keyframes electron-orbit {
-  from { transform: translate(-50%, -50%) rotate(var(--orbit-angle)) rotate(0deg); }
-  to { transform: translate(-50%, -50%) rotate(var(--orbit-angle)) rotate(360deg); }
-}
+@keyframes star-drift { from { opacity: .3; transform: translate3d(0, 0, 0); } to { opacity: .8; transform: translate3d(4px, -6px, 0); } }
 
 @media (max-width: 760px) {
   .site-header { height: 70px; padding: 0 6%; }
@@ -239,5 +234,5 @@ a { color: inherit; text-decoration: none; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
   .reveal { opacity: 1; transform: none; }
-  .atom-electron-track { animation: none; }
+  .tagline-star { animation: none; }
 }

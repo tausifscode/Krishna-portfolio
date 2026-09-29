@@ -75,8 +75,14 @@ a { color: inherit; text-decoration: none; }
 .hero-aside { position: absolute; z-index: 2; top: 29%; right: 6.2%; display: grid; width: 330px; height: 330px; place-items: center; color: #a8afaa; font-family: var(--mono); font-size: 8px; letter-spacing: 0.14em; line-height: 1.9; text-align: center; }
 .tagline-circuit { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
 .circuit-traces { stroke: rgba(196, 255, 94, .28); stroke-width: .9; stroke-linecap: round; stroke-linejoin: round; }
-.circuit-pulse { stroke: rgba(224, 255, 183, .8); stroke-dasharray: 2 105; animation: circuit-flow 8s linear infinite; }
+.circuit-pulse { stroke: rgba(224, 255, 183, .95); stroke-dasharray: 4 112; animation: circuit-flow 7s linear infinite; }
 .circuit-nodes { fill: rgba(196, 255, 94, .6); filter: drop-shadow(0 0 3px rgba(196, 255, 94, .35)); }
+.circuit-chip { filter: drop-shadow(0 0 8px rgba(196, 255, 94, .12)); }
+.chip-pins { stroke: rgba(196, 255, 94, .65); stroke-width: 1; }
+.chip-package { fill: rgba(13, 18, 15, .95); stroke: rgba(196, 255, 94, .72); stroke-width: 1; }
+.chip-core { fill: rgba(196, 255, 94, .06); stroke: rgba(196, 255, 94, .4); stroke-width: .7; }
+.chip-circuit { stroke: rgba(196, 255, 94, .85); stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; animation: chip-flow 3s ease-in-out infinite alternate; }
+.chip-node { fill: #dfffad; filter: drop-shadow(0 0 3px rgba(196, 255, 94, .85)); }
 .hero-index { position: absolute; right: 7%; bottom: 65px; color: #73787a; font-family: var(--mono); font-size: 9px; }
 .scroll-cue { position: absolute; z-index: 2; bottom: 58px; left: 11.2%; display: flex; align-items: center; gap: 12px; color: #929697; font-family: var(--mono); font-size: 8px; letter-spacing: 0.14em; }
 .scroll-cue-line { position: relative; display: block; width: 34px; height: 1px; background: #525857; }
@@ -166,7 +172,8 @@ a { color: inherit; text-decoration: none; }
 .reveal.is-visible { opacity: 1; transform: translateY(0); }
 
 @keyframes scan { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(21px); } }
-@keyframes circuit-flow { to { stroke-dashoffset: -107; } }
+@keyframes circuit-flow { to { stroke-dashoffset: -116; } }
+@keyframes chip-flow { from { opacity: .45; } to { opacity: 1; } }
 
 @media (max-width: 760px) {
   .site-header { height: 70px; padding: 0 6%; }
@@ -221,5 +228,5 @@ a { color: inherit; text-decoration: none; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
   .reveal { opacity: 1; transform: none; }
-  .circuit-pulse { animation: none; }
+  .circuit-pulse, .chip-circuit { animation: none; }
 }

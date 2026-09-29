@@ -3,14 +3,15 @@ const stage = document.querySelector(".chip-stage");
 const assembly = document.querySelector(".chip-assembly");
 const blocks = document.querySelectorAll(".chip-block");
 const labels = document.querySelectorAll(".chip-label");
-const canTiltChip =
+const cursorGlow = document.querySelector(".chip-cursor-glow");
+const canShowCursorGlow =
   window.matchMedia("(hover: hover) and (pointer: fine)").matches &&
   !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-let targetPointerX = 0;
-let targetPointerY = 0;
-let pointerX = 0;
-let pointerY = 0;
-let pointerFrameRequested = false;
+let targetGlowX = 0;
+let targetGlowY = 0;
+let glowX = 0;
+let glowY = 0;
+let glowFrameRequested = false;
 
 function updateChip() {
   if (!story || !stage || !assembly) return;
@@ -22,7 +23,7 @@ function updateChip() {
   const tilt = 58 - explode * 13;
 
   stage.style.setProperty("--progress", progress.toFixed(3));
-  assembly.style.transform = `rotateX(${tilt - pointerY * 7}deg) rotateY(${pointerX * 8}deg) rotateZ(-34deg) translate3d(${pointerX * 7}px, ${pointerY * 7}px, 0)`;
+  assembly.style.transform = `rotateX(${tilt}deg) rotateZ(-34deg) translateY(3%)`;
 
   blocks.forEach((block, index) => {
     const directions = [
@@ -50,38 +51,39 @@ function updateChip() {
   });
 }
 
-function animatePointerTilt() {
-  pointerX += (targetPointerX - pointerX) * 0.14;
-  pointerY += (targetPointerY - pointerY) * 0.14;
-  updateChip();
+function animateCursorGlow() {
+  glowX += (targetGlowX - glowX) * 0.2;
+  glowY += (targetGlowY - glowY) * 0.2;
+  cursorGlow.style.left = `${glowX}px`;
+  cursorGlow.style.top = `${glowY}px`;
 
-  if (Math.abs(targetPointerX - pointerX) > 0.001 || Math.abs(targetPointerY - pointerY) > 0.001) {
-    window.requestAnimationFrame(animatePointerTilt);
+  if (Math.abs(targetGlowX - glowX) > 0.5 || Math.abs(targetGlowY - glowY) > 0.5) {
+    window.requestAnimationFrame(animateCursorGlow);
   } else {
-    pointerX = targetPointerX;
-    pointerY = targetPointerY;
-    updateChip();
-    pointerFrameRequested = false;
+    glowX = targetGlowX;
+    glowY = targetGlowY;
+    cursorGlow.style.left = `${glowX}px`;
+    cursorGlow.style.top = `${glowY}px`;
+    glowFrameRequested = false;
   }
 }
 
-function schedulePointerTilt() {
-  if (pointerFrameRequested) return;
-  pointerFrameRequested = true;
-  window.requestAnimationFrame(animatePointerTilt);
+function scheduleCursorGlow() {
+  if (glowFrameRequested) return;
+  glowFrameRequested = true;
+  window.requestAnimationFrame(animateCursorGlow);
 }
 
-if (canTiltChip && assembly) {
+if (canShowCursorGlow && assembly && stage && cursorGlow) {
   assembly.addEventListener("pointermove", (event) => {
-    const bounds = assembly.getBoundingClientRect();
-    targetPointerX = ((event.clientX - bounds.left) / bounds.width - 0.5) * 2;
-    targetPointerY = ((event.clientY - bounds.top) / bounds.height - 0.5) * 2;
-    schedulePointerTilt();
+    const bounds = stage.getBoundingClientRect();
+    targetGlowX = event.clientX - bounds.left;
+    targetGlowY = event.clientY - bounds.top;
+    stage.classList.add("is-pointer-active");
+    scheduleCursorGlow();
   });
   assembly.addEventListener("pointerleave", () => {
-    targetPointerX = 0;
-    targetPointerY = 0;
-    schedulePointerTilt();
+    stage.classList.remove("is-pointer-active");
   });
 }
 

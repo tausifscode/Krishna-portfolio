@@ -3,15 +3,78 @@ const stage = document.querySelector(".chip-stage");
 const assembly = document.querySelector(".chip-assembly");
 const blocks = document.querySelectorAll(".chip-block");
 const labels = document.querySelectorAll(".chip-label");
-const cursorGlow = document.querySelector(".chip-cursor-glow");
-const canShowCursorGlow =
+const customCursor = document.querySelector(".custom-cursor");
+const cursorRing = customCursor?.querySelector(".custom-cursor__ring");
+const canShowCustomCursor =
   window.matchMedia("(hover: hover) and (pointer: fine)").matches &&
   !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-let targetGlowX = 0;
-let targetGlowY = 0;
-let glowX = 0;
-let glowY = 0;
-let glowFrameRequested = false;
+let targetRingX = 0;
+let targetRingY = 0;
+let ringX = 0;
+let ringY = 0;
+let cursorFrameRequested = false;
+
+if (canShowCustomCursor && customCursor && cursorRing) {
+  document.body.classList.add("has-custom-cursor");
+
+  function animateCursorRing() {
+    ringX += (targetRingX - ringX) * 0.2;
+    ringY += (targetRingY - ringY) * 0.2;
+    cursorRing.style.left = `${ringX}px`;
+    cursorRing.style.top = `${ringY}px`;
+
+    if (Math.abs(targetRingX - ringX) > 0.5 || Math.abs(targetRingY - ringY) > 0.5) {
+      window.requestAnimationFrame(animateCursorRing);
+    } else {
+      ringX = targetRingX;
+      ringY = targetRingY;
+      cursorRing.style.left = `${ringX}px`;
+      cursorRing.style.top = `${ringY}px`;
+      cursorFrameRequested = false;
+    }
+  }
+
+  document.addEventListener("pointermove", (event) => {
+    if (event.pointerType === "touch") return;
+    const wasVisible = customCursor.classList.contains("is-visible");
+    targetRingX = event.clientX;
+    targetRingY = event.clientY;
+    customCursor.style.setProperty("--dot-x", `${event.clientX}px`);
+    customCursor.style.setProperty("--dot-y", `${event.clientY}px`);
+    if (!wasVisible) {
+      ringX = targetRingX;
+      ringY = targetRingY;
+      cursorRing.style.left = `${ringX}px`;
+      cursorRing.style.top = `${ringY}px`;
+    }
+    customCursor.classList.add("is-visible");
+
+    if (!cursorFrameRequested) {
+      cursorFrameRequested = true;
+      window.requestAnimationFrame(animateCursorRing);
+    }
+  });
+
+  document.addEventListener("pointerover", (event) => {
+    if (event.target instanceof Element && event.target.closest("a, button, [role='button']")) {
+      customCursor.classList.add("is-active");
+    }
+  });
+
+  document.addEventListener("pointerout", (event) => {
+    if (
+      event.target instanceof Element &&
+      event.target.closest("a, button, [role='button']") &&
+      !(event.relatedTarget instanceof Element && event.relatedTarget.closest("a, button, [role='button']"))
+    ) {
+      customCursor.classList.remove("is-active");
+    }
+  });
+
+  document.addEventListener("pointerdown", () => customCursor.classList.add("is-pressed"));
+  document.addEventListener("pointerup", () => customCursor.classList.remove("is-pressed"));
+  document.addEventListener("pointerleave", () => customCursor.classList.remove("is-visible", "is-active"));
+}
 
 function updateChip() {
   if (!story || !stage || !assembly) return;
@@ -48,42 +111,6 @@ function updateChip() {
 
   labels.forEach((label, index) => {
     label.style.opacity = String(Math.max(0, Math.min(1, (explode - 0.25 - index * 0.12) * 3)));
-  });
-}
-
-function animateCursorGlow() {
-  glowX += (targetGlowX - glowX) * 0.2;
-  glowY += (targetGlowY - glowY) * 0.2;
-  cursorGlow.style.left = `${glowX}px`;
-  cursorGlow.style.top = `${glowY}px`;
-
-  if (Math.abs(targetGlowX - glowX) > 0.5 || Math.abs(targetGlowY - glowY) > 0.5) {
-    window.requestAnimationFrame(animateCursorGlow);
-  } else {
-    glowX = targetGlowX;
-    glowY = targetGlowY;
-    cursorGlow.style.left = `${glowX}px`;
-    cursorGlow.style.top = `${glowY}px`;
-    glowFrameRequested = false;
-  }
-}
-
-function scheduleCursorGlow() {
-  if (glowFrameRequested) return;
-  glowFrameRequested = true;
-  window.requestAnimationFrame(animateCursorGlow);
-}
-
-if (canShowCursorGlow && assembly && stage && cursorGlow) {
-  assembly.addEventListener("pointermove", (event) => {
-    const bounds = stage.getBoundingClientRect();
-    targetGlowX = event.clientX - bounds.left;
-    targetGlowY = event.clientY - bounds.top;
-    stage.classList.add("is-pointer-active");
-    scheduleCursorGlow();
-  });
-  assembly.addEventListener("pointerleave", () => {
-    stage.classList.remove("is-pointer-active");
   });
 }
 

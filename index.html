@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#080a0d" />
+    <meta
+      name="description"
+      content="The portfolio of Alex Morgan, VLSI designer and semiconductor engineer."
+    />
+    <title>Alex Morgan — VLSI Designer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="wordmark" href="#home" aria-label="Alex Morgan, home">
+        <span class="wordmark-icon" aria-hidden="true">A<span>.</span></span>
+        <span>AM<span class="wordmark-divider"> / </span>VLSI</span>
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#work">Selected work</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a class="availability" href="#contact"><span></span> Available for projects</a>
+    </header>
+
+    <main>
+      <section class="hero" id="home">
+        <div class="hero-grid" aria-hidden="true"></div>
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="eyebrow-line"></span> VLSI DESIGNER · SILICON ENGINEER</p>
+          <h1>Ideas into<br /><span>integrated</span><br />circuits.</h1>
+          <p class="hero-description">
+            I design the tiny worlds inside the chips that power our big ones.
+            From RTL to silicon, I make complexity click.
+          </p>
+          <a class="text-link" href="#chip-story">Explore my world <span aria-hidden="true">↓</span></a>
+        </div>
+        <div class="hero-aside" aria-hidden="true">
+          <span class="aside-rule"></span>
+          <span>THOUGHTFULLY<br />ENGINEERED<br />DOWN TO THE ATOM.</span>
+        </div>
+        <div class="hero-index" aria-hidden="true">01 — 04</div>
+        <a class="scroll-cue" href="#chip-story" aria-label="Scroll to explore">
+          <span class="scroll-cue-line"></span> SCROLL TO EXPLORE
+        </a>
+        <div class="hero-orbit orbit-one" aria-hidden="true"></div>
+        <div class="hero-orbit orbit-two" aria-hidden="true"></div>
+      </section>
+
+      <section class="chip-story" id="chip-story" aria-label="How I design a chip">
+        <div class="chip-stage">
+          <div class="stage-grid" aria-hidden="true"></div>
+          <div class="stage-heading">
+            <p class="eyebrow"><span class="eyebrow-line"></span> FROM BLUEPRINT TO BREAKTHROUGH</p>
+            <h2>Every layer has<br />a <span>purpose.</span></h2>
+          </div>
+
+          <div class="chip-assembly" aria-label="A 3D chip separating into its component layers as you scroll">
+            <div class="chip-shadow" aria-hidden="true"></div>
+            <div class="chip-part chip-pins" aria-hidden="true">
+              <div class="pin-bank pin-north"></div>
+              <div class="pin-bank pin-south"></div>
+              <div class="pin-bank pin-east"></div>
+              <div class="pin-bank pin-west"></div>
+            </div>
+            <div class="chip-part chip-substrate" aria-hidden="true">
+              <div class="substrate-trace trace-one"></div>
+              <div class="substrate-trace trace-two"></div>
+              <div class="substrate-trace trace-three"></div>
+              <div class="substrate-core">AM<span>·</span>01</div>
+              <div class="substrate-corner corner-one"></div>
+              <div class="substrate-corner corner-two"></div>
+              <div class="substrate-corner corner-three"></div>
+              <div class="substrate-corner corner-four"></div>
+            </div>
+            <div class="chip-part chip-die" aria-hidden="true">
+              <div class="die-border"></div>
+              <div class="die-label">SILICON<br /><span>CORE</span></div>
+              <div class="die-center">
+                <span class="die-glyph">μ</span>
+                <span class="die-caption">COMPUTE ENGINE</span>
+              </div>
+              <span class="die-node node-one"></span>
+              <span class="die-node node-two"></span>
+              <span class="die-node node-three"></span>
+              <span class="die-node node-four"></span>
+              <span class="die-node node-five"></span>
+              <span class="die-node node-six"></span>
+              <span class="die-node node-seven"></span>
+              <span class="die-node node-eight"></span>
+              <span class="die-node node-nine"></span>
+              <span class="die-node node-ten"></span>
+              <span class="die-node node-eleven"></span>
+              <span class="die-node node-twelve"></span>
+            </div>
+            <div class="chip-part chip-block block-memory" aria-hidden="true">
+              <span>MEM</span><i></i><i></i><i></i><i></i><i></i><i></i>
+            </div>
+            <div class="chip-part chip-block block-logic" aria-hidden="true">
+              <span>LOGIC</span><i></i><i></i><i></i><i></i>
+            </div>
+            <div class="chip-part chip-block block-io" aria-hidden="true">
+              <span>I / O</span><i></i><i></i><i></i><i></i>
+            </div>
+            <div class="chip-part chip-block block-clock" aria-hidden="true">
+              <span>CLOCK</span><i></i><i></i><i></i>
+            </div>
+          </div>
+
+          <div class="chip-label label-rtl"><span>01</span> ARCHITECTURE <i></i></div>
+          <div class="chip-label label-silicon"><span>02</span> SILICON <i></i></div>
+          <div class="chip-label label-memory"><span>03</span> MEMORY BLOCK <i></i></div>
+          <div class="chip-caption"><span class="caption-dot"></span> ONE CHIP. A THOUSAND DECISIONS.</div>
+          <div class="stage-progress" aria-hidden="true"><span></span></div>
+        </div>
+      </section>
+
+      <section class="about section-pad" id="about">
+        <div class="section-number">01 <span>/ ABOUT</span></div>
+        <div class="about-content reveal">
+          <p class="eyebrow"><span class="eyebrow-line"></span> ENGINEERING WITH INTENTION</p>
+          <h2>Precision at the<br />smallest <span>scale.</span></h2>
+          <p class="about-description">
+            I’m Alex, a VLSI designer focused on building reliable, efficient
+            digital systems. I bring a systems mindset to every stage of the
+            design process—from the first architecture sketch to a clean,
+            timing-closed layout.
+          </p>
+          <div class="skill-list" aria-label="Areas of expertise">
+            <span>RTL DESIGN</span><span>VERIFICATION</span><span>ASIC FLOW</span><span>PHYSICAL DESIGN</span>
+          </div>
+        </div>
+        <div class="about-mark" aria-hidden="true"><span>μ</span><i></i><i></i><i></i></div>
+      </section>
+
+      <section class="work section-pad" id="work">
+        <div class="section-number">02 <span>/ SELECTED WORK</span></div>
+        <div class="work-heading reveal">
+          <p class="eyebrow"><span class="eyebrow-line"></span> THOUGHT MADE TANGIBLE</p>
+          <h2>Built for the<br /><span>real world.</span></h2>
+        </div>
+        <div class="project-list">
+          <article class="project-card reveal">
+            <span class="project-index">01</span>
+            <div><p class="project-type">RTL DESIGN · LOW POWER</p><h3>Adaptive compute core</h3><p class="project-summary">A power-conscious processing block designed for responsive edge devices.</p></div>
+            <span class="project-arrow" aria-hidden="true">↗</span>
+          </article>
+          <article class="project-card reveal">
+            <span class="project-index">02</span>
+            <div><p class="project-type">VERIFICATION · SYSTEMVERILOG</p><h3>Protocol verification suite</h3><p class="project-summary">A reusable test environment built to find corner cases before silicon.</p></div>
+            <span class="project-arrow" aria-hidden="true">↗</span>
+          </article>
+          <article class="project-card reveal">
+            <span class="project-index">03</span>
+            <div><p class="project-type">PHYSICAL DESIGN · TIMING</p><h3>Timing-closed datapath</h3><p class="project-summary">A streamlined implementation balancing performance, area, and power.</p></div>
+            <span class="project-arrow" aria-hidden="true">↗</span>
+          </article>
+        </div>
+      </section>
+
+      <section class="contact section-pad" id="contact">
+        <div class="section-number">03 <span>/ LET’S CONNECT</span></div>
+        <div class="contact-content reveal">
+          <p class="eyebrow"><span class="eyebrow-line"></span> HAVE A CHALLENGE IN MIND?</p>
+          <h2>Let’s make<br />something <span>matter.</span></h2>
+          <a class="contact-link" href="mailto:hello@alexmorgan.design">hello@alexmorgan.design <span aria-hidden="true">↗</span></a>
+        </div>
+        <footer class="site-footer">
+          <a class="wordmark" href="#home"><span class="wordmark-icon" aria-hidden="true">A<span>.</span></span><span>AM<span class="wordmark-divider"> / </span>VLSI</span></a>
+          <span>DESIGNED WITH PRECISION · © 2025</span>
+          <a href="#home">BACK TO TOP ↑</a>
+        </footer>
+      </section>
+    </main>
+  </body>
+</html>
